@@ -1,0 +1,14 @@
+5/26
+  Decide which Graph problem to implement
+  Figure out what the problem we're trying to solve.
+  5/27
+  Method to solve the problem
+  Break down our problem into manageable components
+  Start thinking about UML design / pseudocode.
+  5/29
+  Assign components to groupmemebers / start coding.
+  
+  
+
+
+
