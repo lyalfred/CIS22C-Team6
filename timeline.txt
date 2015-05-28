@@ -1,6 +1,9 @@
 5/26
-  Decide which Graph problem to implement
-  Figure out what the problem we're trying to solve.
+  Decide which Graph problem to implement: Dijkstra's algorithm
+  Figure out what the problem we're trying to solve:
+    - Efficient road repair algorithm
+    - Food menu
+      
   5/27
   Method to solve the problem
   Break down our problem into manageable components
