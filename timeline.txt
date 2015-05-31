@@ -1,15 +1,21 @@
 5/26
-  Decide which Graph problem to implement: Dijkstra's algorithm
+  Decide which Graph problems to implement: 
+  Dijkstra's algorithm / Hamiltonian / Euler
   Figure out what the problem we're trying to solve:
-    - Efficient road repair algorithm
-    - Food menu
+    - Road Repair (Each edge once)
+    - Delivery Truck (Each node once)
+    - Server Network (Shortest path)
       
-  5/27
-  Method to solve the problem
-  Break down our problem into manageable components
-  Start thinking about UML design / pseudocode.
   5/29
-  Assign components to groupmemebers / start coding.
+  Assign components to groupmemebers
+  Start pseudocode 
+  
+  6/1
+  Review Pseudocode.
+  Start coding
+  
+  6/5 
+  First Check-in. Review Current progress
   
   
 
