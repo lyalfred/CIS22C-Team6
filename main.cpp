@@ -26,8 +26,12 @@ int main() {
 
 	//Menu modules
 	Menu::Initialize();
-	Menu
-	MenuADD
+	Menu Men;
+	MenuAdd MenAdd;
+	MenuRemove MenRemove;
+	MenuUndo MenUndo;
+	MenuDisplay MenDisplay;
+	MenuSolve MenSolve;
 
 	//Main globals
 	int state = 0;		// 0 - splash page
