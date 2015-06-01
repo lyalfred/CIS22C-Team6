@@ -23,7 +23,11 @@ Graph Implementation (Create graph implentation for the chosen graph problem)
     Minh
     
 Documentation (UML design, Report Analysis Document, Pseudocode)
+ 
     UML - Alfred (File creation)
+     
         - Yeshwanth / Minh (Logic Flow)
+        
     Report Analysis Doc - Alfred
+    
     Pseudocode - Yeshwanth / Minh / Alfred
