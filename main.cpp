@@ -11,7 +11,7 @@ Include #include's here
 // Program States
 #define STATE_SPLASH    0
 #define STATE_MAIN      1
-#define STATE_ADD 	    2
+#define STATE_ADD       2
 #define STATE_REMOVE    3
 #define STATE_UNDO      4
 #define STATE_DISPLAY   5
