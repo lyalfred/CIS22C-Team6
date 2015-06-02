@@ -1,4 +1,4 @@
-All statements below are just prototype. The values/datatype may change as per the needs in the actual code.
+All statements below are just prototype. The values/datatype may change as per the needs in the actual code. More variables will added based on the code requirements.
 
 Server network:
 Class Cable
@@ -6,6 +6,7 @@ Class Cable
 + cableLength (double)
 + cableWeight (int)
 + Cable()
+
 + accessors and mutators for variables
 
 Class Server
