@@ -100,28 +100,24 @@ int main() {
 			case 2:		// case state add menu
 				menu_Add.displayHeader();
 				menu_Add.displayBody();
-				menu_Add.displayFooter();
 
 				prev_state = 2;		//set last state to add
 				break;
 			case 3:		// case state for remove menu
 				menu_Remove.displayHeader();
 				menu_Remove.displayBody();
-				menu_Add.displayFooter();
 
 				prev_state = 3;		//set last state to remove
 				break;
 			case 4:		// case state for undo menu
 				menu_Undo.displayHeader();
 				menu_Undo.displayBody();
-				menu_Undo.displayFooter();
 
 				prev_state = 4;		//set last state to undo
 				break;
 			case 5:		// case state for display menu
 				menu_Display.displayHeader();
 				menu_Display.displayBody();
-				menu_Display.displayFooter();
 
 				prev_state = 5;		//set last state to display
 				switch (input.getCh()) {
@@ -136,7 +132,6 @@ int main() {
 			case 6:			//case state for solve menu
 				menu_Display.displayHeader();
 				menu_Display.displayBody();
-				menu_Display.displayFooter();
 				
 				prev_state = 6;		//set last state to solve
 				break;
