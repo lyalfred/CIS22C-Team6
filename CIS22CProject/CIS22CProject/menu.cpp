@@ -44,7 +44,10 @@ void Menu::displayFooter() {
 
 // Add Menu Functions
 void MenuAdd::displayHeader(){
-
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Add Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
 }
 
 void MenuAdd::displayBody(){
@@ -57,7 +60,10 @@ void MenuAdd::displayBody(){
 
 // Remove Menu Functions
 void MenuRemove::displayHeader(){
-
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Remove Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
 }
 
 void MenuRemove::displayBody(){
@@ -69,7 +75,10 @@ void MenuRemove::displayBody(){
 
 // Undo Menu Functions
 void MenuUndo::displayHeader(){
-
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Undo Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
 }
 
 void MenuUndo::displayBody(){
@@ -81,7 +90,10 @@ void MenuUndo::displayBody(){
 
 // Display Menu Functions
 void MenuDisplay::displayHeader(){
-
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Display Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
 }
 
 void MenuDisplay::displayBody(){
@@ -93,7 +105,10 @@ void MenuDisplay::displayBody(){
 
 // Solve Menu Functions
 void MenuDisplay::displayHeader(){
-
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Solve Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
 }
 
 void MenuDisplay::displayBody(){
