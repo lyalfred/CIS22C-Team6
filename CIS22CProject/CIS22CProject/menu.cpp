@@ -4,8 +4,8 @@
 using namespace std;
 
 #include "menu.h"
-#include "HamiltonianCircuit.h"
-#include "GraphInterface.h"
+//#include "HamiltonianCircuit.h"
+//#include "GraphInterface.h"
 
 #define W_SPACER 30
 
@@ -51,7 +51,7 @@ void MenuAdd::displayHeader(){
 }
 
 void MenuAdd::displayBody(){
-
+	cout << "Add Menu Body Content" << endl;
 }
 
 
@@ -67,7 +67,7 @@ void MenuRemove::displayHeader(){
 }
 
 void MenuRemove::displayBody(){
-
+	cout << "Remove Menu Body Content" << endl;
 }
 
 
@@ -82,7 +82,7 @@ void MenuUndo::displayHeader(){
 }
 
 void MenuUndo::displayBody(){
-
+	cout << "Undo Menu Body Content" << endl;
 }
 
 
@@ -97,20 +97,20 @@ void MenuDisplay::displayHeader(){
 }
 
 void MenuDisplay::displayBody(){
-
+	cout << "Display Menu Body Content" << endl;
 }
 
 
 
 
 // Solve Menu Functions
-void MenuDisplay::displayHeader(){
+void MenuSolve::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Solve Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuDisplay::displayBody(){
-
+void MenuSolve::displayBody(){
+	cout << "Solve Menu Body Content" << endl;
 }
