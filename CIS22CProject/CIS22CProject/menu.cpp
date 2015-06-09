@@ -28,7 +28,7 @@ void Menu::displayHeader() {
 
 void Menu::displayBody() {
 	cout << "1. Add Module" << endl;
-	cout << "2. Remove Module" << endl; 
+	cout << "2. Remove Module" << endl;
 	cout << "3. Undo Module" << endl;
 	cout << "4. Display Module" << endl;
 	cout << "5. Solve Menu" << endl;
@@ -42,3 +42,60 @@ void Menu::displayFooter() {
 	cout << " :: ";
 }
 
+// Add Menu Functions
+void MenuAdd::displayHeader(){
+
+}
+
+void MenuAdd::displayBody(){
+
+}
+
+
+
+
+
+// Remove Menu Functions
+void MenuRemove::displayHeader(){
+
+}
+
+void MenuRemove::displayBody(){
+
+}
+
+
+
+
+// Undo Menu Functions
+void MenuUndo::displayHeader(){
+
+}
+
+void MenuUndo::displayBody(){
+
+}
+
+
+
+
+// Display Menu Functions
+void MenuDisplay::displayHeader(){
+
+}
+
+void MenuDisplay::displayBody(){
+
+}
+
+
+
+
+// Solve Menu Functions
+void MenuDisplay::displayHeader(){
+
+}
+
+void MenuDisplay::displayBody(){
+
+}
