@@ -28,7 +28,7 @@ using namespace std;
 
 int main() {
 
-	HamiltonianCircuit<class LabelType> circuit;
+	HamiltonianCircuit<string> circuit;
 
 	Input input;
 	//Menu modules
@@ -96,30 +96,50 @@ int main() {
 						state = 6;
 						break;
 				}
+				break;
 			case 2:		// case state add menu
-				
+				menu_Add.displayHeader();
+				menu_Add.displayBody();
+				menu_Add.displayFooter();
+
+				prev_state = 2;		//set last state to add
 				break;
 			case 3:		// case state for remove menu
-			
+				menu_Remove.displayHeader();
+				menu_Remove.displayBody();
+				menu_Add.displayFooter();
+
+				prev_state = 3;		//set last state to remove
 				break;
 			case 4:		// case state for undo menu
-			
+				menu_Undo.displayHeader();
+				menu_Undo.displayBody();
+				menu_Undo.displayFooter();
+
+				prev_state = 4;		//set last state to undo
 				break;
 			case 5:		// case state for display menu
-			
-				switch (substate) {
-					case 1:	//DFS
-					
-						break;
-					case 2:	// BFS
+				menu_Display.displayHeader();
+				menu_Display.displayBody();
+				menu_Display.displayFooter();
 
+				prev_state = 5;		//set last state to display
+				switch (input.getCh()) {
+					case 1:	//DFT
+						substate = 1;
+						break;
+					case 2:	// BFT
+						substate = 2;
 						break;
 					}
 				break;
-			case 6:
-				// menu option for solve menu
-
-				break;			
+			case 6:			//case state for solve menu
+				menu_Display.displayHeader();
+				menu_Display.displayBody();
+				menu_Display.displayFooter();
+				
+				prev_state = 6;		//set last state to solve
+				break;
 		}
 	}
 
