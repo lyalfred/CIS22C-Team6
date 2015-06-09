@@ -1,0 +1,23 @@
+﻿Build started 6/9/2015 10:18:26 AM.
+     1>Project "C:\Users\Alfred\Desktop\22C\CIS22CProject\CIS22CProject\CIS22CProject.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\alfred\desktop\22c\cis22cproject\cis22cproject\linkedgraph.h(111): error C2027: use of undefined type 'main::LabelType'
+                 c:\users\alfred\desktop\22c\cis22cproject\cis22cproject\main.cpp(31) : see declaration of 'main::LabelType'
+                 c:\users\alfred\desktop\22c\cis22cproject\cis22cproject\linkedgraph.h(100) : while compiling class template member function 'bool LinkedGraph<LabelType>::add(LabelType,LabelType,int)'
+                 with
+                 [
+                     LabelType=main::LabelType
+                 ]
+                 c:\users\alfred\desktop\22c\cis22cproject\cis22cproject\hamiltoniancircuit.h(13) : see reference to class template instantiation 'LinkedGraph<LabelType>' being compiled
+                 with
+                 [
+                     LabelType=main::LabelType
+                 ]
+                 c:\users\alfred\desktop\22c\cis22cproject\cis22cproject\main.cpp(31) : see reference to class template instantiation 'HamiltonianCircuit<main::LabelType>' being compiled
+     1>Done Building Project "C:\Users\Alfred\Desktop\22C\CIS22CProject\CIS22CProject\CIS22CProject.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.10
