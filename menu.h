@@ -1,53 +1,50 @@
-// beginning
 #pragma once
 
 #include <string>
 #include <iomanip>
-using namespace std;
+//#include "HamiltonianCircuit.h"
+//#include "LinkedGraph.h"
 
-/*
-include here
-*/
+using namespace std;
 
 class Menu {
 
 protected:
-	// data type classes here
+	
 
 public:
-	static void Initialize();
-	virtual void displayHeader();      //Top portion of our user interface display
-	virtual void displayBody();		// The raw menu content
-	virtual void displayFooter(); 	   //Bottom portion of user interface display
+//	static void Initialize();
+	virtual void displayHeader();       //Top portion of our user interface display
+	virtual void displayBody();			// The raw menu content
+	virtual void displayFooter(); 	   
 };
 
 class MenuAdd : public Menu {
 public:
 	void displayHeader();
-	void dispalyBody();
-
+	void displayBody();
 };
 
 class MenuRemove : public Menu {
 public:
 	void displayHeader();
-	void dispalyBody();
+	void displayBody();
 };
 
 class MenuUndo : public Menu {
 public:
 	void displayHeader();
-	void dispalyBody();
+	void displayBody();
 };
 
 class MenuDisplay : public Menu {
 public:
 	void displayHeader();
-	void dispalyBody();
+	void displayBody();
 };
 
 class MenuSolve : public Menu {
 public:
 	void displayHeader();
-	void dispalyBody();
+	void displayBody();
 };
