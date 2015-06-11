@@ -76,6 +76,7 @@ int main() {
 				menu_Main.displayFooter(); // display main menu footer
 
 				prev_state = 1; // set last state to main menu
+				cout << "Input your choice" << endl;
 				switch (input.getCh())	{	//switch input
 
 					case 1: // add menu
@@ -92,6 +93,12 @@ int main() {
 						break;
 					case 5: //solve menu
 						state = 6;
+						break;
+					case 6:	//quit menu
+						state = 7;
+						break;
+					case 7:	//dance party
+						state = 8;
 						break;
 				}
 				break;
@@ -157,9 +164,26 @@ int main() {
 						break;
 				}
 				break;
+			case 7:			//case quit
+				quit = true;
+				break;
+			case 8:
+				system(PCLEAR);
+				menu_Main.displayHeader();
+				cout << "ARE YOU READY? Y/N?" << endl;
+				menu_Main.displayFooter();
+
+				switch (input.getCh()) {
+				case 'y':
+				case 'Y':
+					ShellExecute(NULL, "open", "http://corgiorgy.com", NULL, NULL, SW_SHOWNORMAL);
+				case 'n':
+				case 'N':
+					state = prev_state;
+				}
+
+				break;
 		}
 	}
-
-	system("pause");
 	return 0;
 }
