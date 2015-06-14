@@ -111,11 +111,22 @@ void MenuRemove::displayHeader(){
 	cout << "HamiltonianCircuit :: Remove Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
+	
 }
 
 void MenuRemove::displayBody(){
 	cout << "Remove Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
+	/*
+	Prompt user for startPoint and endPoint from where the edge has to be removed.
+	
+	Local static variable UndostartPoint = startPoint
+	Local static vaiable UndoendPoint = endPoint
+	Local static vaiable UndoWeight = theGraph.getWeight(startPoint, endPoint)
+	
+	theGraph.remove(startPoint,endPoint);
+	
+	*/
 }
 
 
@@ -132,6 +143,13 @@ void MenuUndo::displayHeader(){
 void MenuUndo::displayBody(){
 	cout << "Undo Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
+	//Algorithm for Undo -
+	/*
+	Accept the call for undo removal -
+	Call add function using the local static variables.
+	theGraph.add(UndostartPoint,UndoendPoint, Undoweight);
+	
+	*/
 }
 
 
