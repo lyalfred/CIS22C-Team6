@@ -74,7 +74,8 @@ void MenuRead::displayBody(){
 		theGraph.add(startLabel, endLabel, weight);
 	}
 	
-	
+	Ask user for home vertex (Starting point). Store it in the string home.
+	theGraph.setHome(home);
 	
 	*/
 }
