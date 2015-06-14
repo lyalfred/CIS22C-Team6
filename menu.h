@@ -19,6 +19,12 @@ public:
 	virtual void displayFooter(); 	   
 };
 
+class MenuRead : public Menu {
+public:
+	void displayHeader();
+	void displayBody();
+};
+
 class MenuAdd : public Menu {
 public:
 	void displayHeader();
@@ -44,6 +50,12 @@ public:
 };
 
 class MenuSolve : public Menu {
+public:
+	void displayHeader();
+	void displayBody();
+};
+
+class MenuWrite : public Menu {
 public:
 	void displayHeader();
 	void displayBody();
