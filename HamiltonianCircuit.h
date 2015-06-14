@@ -5,6 +5,7 @@
 # include <vector>
 # include <iostream>
 
+
 using namespace std;
 
 
@@ -21,14 +22,25 @@ public:
 	// Return total weight of the Hamiltonian Circuit
 	int getWeight() const { return hamiltonianWeight; }
 
+	//Mutator for home
+	void setHome(LabelType h) { home = h; }
+
 
 	/*find and display the Hamiltonian Circuit from the start vertex
 	@param: startLabel name of the start vertex (home) */
-	void displayHamiltonianC(const LabelType& startLabel);
-
+	void displayHamiltonianC();
 
 	// Save the Hamiltonian Circuit to file
 	void saveHamiltonianC(ofstream &ofs);
+
+
+	//Traversal functions
+	void depthFirstTraversalH(void visit(LabelType&)) { depthFirstTraversal(home, visit); }
+	void breadthFirstTraversalH(void visit(LabelType&)) { breadthFirstTraversal(home, visit); }
+	
+	//Save to file
+	bool saveToFileH(ofstream &ofs) { saveToFile(home, ofs); }
+	
 
 private:
 	/*find the Hamiltonian Circuit from a given vertex
@@ -40,11 +52,14 @@ private:
 	*/
 	bool findHamiltonianC(const LabelType& startLabel);
 	
+	
 private:
 	vector<Vertex<LabelType>*> hamiltonianC; // the vector contains Hamiltonian Circuit
 	int hamiltonianWeight; //total weight of all the edges in Hamiltonian Circuit
 	LabelType home; // Label of the home vertex (the starting point)
+	
 };
+
 
 template <class LabelType>
 void HamiltonianCircuit<LabelType>::saveHamiltonianC(ofstream &ofs)
@@ -57,7 +72,7 @@ void HamiltonianCircuit<LabelType>::saveHamiltonianC(ofstream &ofs)
 		end = hamiltonianC[n + 1];
 		int weight = start->getEdgeWeight(end->getLabel());
 
-		ofs << start->getLabel() << " - " << end->getLabel() << "    " << weight << endl;
+		ofs << start->getLabel() << " - " << end->getLabel() << " - " << weight << endl;
 	}
 	ofs << "----------------" << endl;
 	ofs << "Total weight: " << hamiltonianWeight << endl;
@@ -65,9 +80,9 @@ void HamiltonianCircuit<LabelType>::saveHamiltonianC(ofstream &ofs)
 
 
 template <class LabelType>
-void HamiltonianCircuit<LabelType>::displayHamiltonianC(const LabelType& startLabel)
+void HamiltonianCircuit<LabelType>::displayHamiltonianC()
 {
-	if (findHamiltonianC(startLabel))
+	if (findHamiltonianC(home))
 	{
 		Vertex<LabelType>* start = 0, *end = 0;
 
@@ -84,7 +99,7 @@ void HamiltonianCircuit<LabelType>::displayHamiltonianC(const LabelType& startLa
 		cout << "Total weight: " << hamiltonianWeight << endl;
 	}
 	else
-		cout << "Error: Could not find " << startLabel << endl;
+		cout << "Error: Could not find " << home << endl;
 }
 
 
