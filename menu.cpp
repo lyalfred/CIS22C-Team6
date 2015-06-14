@@ -56,8 +56,26 @@ void MenuRead::displayBody(){
 	
 	/*
 	Ask user the name of the file that contains the graph. 
-	Store in the string: theFile
-	theGraph.readFromFile(theFile);
+	Open the file to read. Assign it to inFile.
+	
+	string startLabel, endLabel;
+	int weight;
+	string line;
+
+	while (getline(inFile,line))
+	{
+		int pos1 = line.find('-', 0);
+		startLabel = line.substr(0, pos1 - 1);
+		int pos2 = line.find('-', pos1 + 2);
+		endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
+		string weightString = line.substr(pos2 + 2);
+		weight = atoi(weightString.c_str());
+
+		theGraph.add(startLabel, endLabel, weight);
+	}
+	
+	
+	
 	*/
 }
 
@@ -180,6 +198,6 @@ void MenuWrite::displayBody(){
 	/*
 	Ask user for the name of the file . 
 	Store in the string: theFile
-	theGraph.writeToFile(theFile);
+	theGraph.saveToFileH(theFile);
 	*/
 }
