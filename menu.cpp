@@ -42,6 +42,25 @@ void Menu::displayFooter() {
 	cout << " :: ";
 }
 
+// Read Menu Functions
+void MenuRead::displayHeader(){
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Read Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
+}
+
+void MenuRead::displayBody(){
+	cout << "Read a graph from file" << endl;
+	cout << "Press 1 to return to main menu" << endl;
+	
+	/*
+	Ask user the name of the file that contains the graph. 
+	Store in the string: theFile
+	theGraph.readFromFile(theFile);
+	*/
+}
+
 // Add Menu Functions
 void MenuAdd::displayHeader(){
 	system(PCLEAR);
@@ -53,6 +72,14 @@ void MenuAdd::displayHeader(){
 void MenuAdd::displayBody(){
 	cout << "Add Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
+	
+	/*
+	Ask user for the name of start and end vertex of the edge
+	Store them in 2 strings: startLabel, endLable
+	Ask user for the distance between them
+	Store them in an int: weight
+	theGraph.add(startLabel, endLabel, weight);
+	*/
 }
 
 
@@ -102,6 +129,17 @@ void MenuDisplay::displayHeader(){
 void MenuDisplay::displayBody(){
 	cout << "Display Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
+	/*
+	Write another helper function like this:
+	displayHelper(LabelType& label)
+	{
+		cout << label << " ";
+	}
+	
+	then call it from here like this:
+	theGraph.depthFirstTraversalH(displayHelper) or
+	theGraph.breadthFirstTraversalH(displayHelper)
+	*/
 }
 
 
@@ -118,5 +156,30 @@ void MenuSolve::displayHeader(){
 void MenuSolve::displayBody(){
 	cout << "Solve Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
+	
+	/*
+	theGraph.displayHamiltonianC()
+	
+	*/
+	
+	
 }
 
+// Write Menu Functions
+void MenuWrite::displayHeader(){
+	system(PCLEAR);
+	cout << "HamiltonianCircuit :: Write Menu" << endl;
+	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
+	cout << setfill(' ');
+}
+
+void MenuWrite::displayBody(){
+	cout << "Write a graph to file" << endl;
+	cout << "Press 1 to return to main menu" << endl;
+	
+	/*
+	Ask user for the name of the file . 
+	Store in the string: theFile
+	theGraph.writeToFile(theFile);
+	*/
+}
