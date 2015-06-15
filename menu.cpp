@@ -168,12 +168,12 @@ void MenuUndo::displayBody(){
 	cout << "Undo Menu Body Content" << endl;
 	if(undoBool){
 		cout << "Undoing recently added edge..."<< endl;
-		theGraph.add(undostartPoint, undoendPoint, undoWeight);
+		theGraph.remove(undostartPoint, undoendPoint, undoWeight);
 		cout << "Recently added edge was removed";
 	}
 	else {
 		cout << "Undoing recently removed edge..."<< endl;
-		theGraph.remove(undostartPoint, undoendPoint, undoWeight);
+		theGraph.add(undostartPoint, undoendPoint, undoWeight);
 		cout << "Recently removed edge was added";
 	}
 	
