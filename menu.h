@@ -12,7 +12,7 @@ template <class Labeltype>
 class Menu {
 
 private:
-//	HamiltonianCircuit<Labeltype> theGraph;
+//	HamiltonianCircuit<class Labetype> 
 public:
 	Input input;
 	virtual void displayHeader();       //Top portion of our user interface display
