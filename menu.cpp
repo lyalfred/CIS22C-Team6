@@ -38,6 +38,9 @@ void Menu::displayBody() {
 	cout << "3. Undo Module" << endl;
 	cout << "4. Display Module" << endl;
 	cout << "5. Solve Menu" << endl;
+	cout << "6. Read Menu" << endl;
+	cout << "7. Write Menu" << endl;
+	cout << "8. Quit Option" << endl;
 }
 
 void Menu::displayFooter() {
