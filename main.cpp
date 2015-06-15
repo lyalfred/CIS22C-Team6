@@ -1,7 +1,7 @@
 #include <iostream>
 #include "menu.h"
-//#include "HamiltonianCircuit.h"
-//#include "GraphInterface.h"
+#include "HamiltonianCircuit.h"
+#include "GraphInterface.h"
 #include "input.h"
 #include <windows.h>
 #include <cstdlib>
@@ -21,25 +21,24 @@ using namespace std;
 #define STATE_UNDO      4
 #define STATE_DISPLAY   5
 #define STATE_SOLVE     6
+#define STATE_READ		7
+#define STATE_WRITE		8
 
-//For Display Graph Option
-#define STATE_SUB_DFT   1		
-#define STATE_SUB_BFT   2
 
 int main() {
 
-//	HamiltonianCircuit<string> circuit;
+	HamiltonianCircuit<string> circuit;
 
 	Input input;
 	//Menu modules
-//	Menu::Initialize();
 	Menu			menu_Main;
 	MenuAdd			menu_Add;
 	MenuRemove		menu_Remove;
 	MenuUndo		menu_Undo;
 	MenuDisplay		menu_Display;
 	MenuSolve		menu_Solve;
-
+	MenuRead		menu_Read;
+	MenuWrite		menu_Write;
 
 		//Main globals
 	int state = 0;			// 0 - splash page
@@ -49,6 +48,10 @@ int main() {
 							// 4 - undo menu
 							// 5 - display menu
 							// 6 - solve menu
+							// 7 - read menu
+							// 8 - write menu
+							// 9 - quit option
+							// 10- dance party!!!
 	int prev_state = 0;
 
 	int substate = 0;		// 0 - None
@@ -94,11 +97,17 @@ int main() {
 					case 5: //solve menu
 						state = 6;
 						break;
-					case 6:	//quit menu
+					case 6:	//read menu
 						state = 7;
 						break;
-					case 7:	//dance party
+					case 7:	//write party
 						state = 8;
+						break;
+					case 8:	//quit option
+						state = 9;
+						break;
+					case 9: // dance party
+						state = 10;
 						break;
 				}
 				break;
@@ -136,18 +145,12 @@ int main() {
 				}
 				break;
 			case 5:		// case state for display menu
-				menu_Display.displayHeader();
+				menu_Display.displayHeader();	
 				menu_Display.displayBody();
 
 				prev_state = 5;		//set last state to display
 				switch (input.getCh()) {
-					case 1:	//DFT
-						substate = 1;
-						break;
-					case 2:	// BFT
-						substate = 2;
-						break;
-					case 3: // main menu
+					case 1: // main menu
 						state  = 1;
 						break;
 					
@@ -164,22 +167,44 @@ int main() {
 						break;
 				}
 				break;
-			case 7:			//case quit
-				quit = true;
+			case 7:
+				menu_Read.displayHeader();
+				menu_Read.displayBody();
+
+				prev_state = 7;
+				switch (input.getCh()){
+					case 1:
+						state = 1;	// back to main menu
+						break;
+				}
 				break;
 			case 8:
+				menu_Write.displayHeader();
+				menu_Read.displayBody();
+
+				prev_state = 8;
+				switch (input.getCh()){
+					case 1:
+						state = 1;  // back to main menu
+						break;
+				}
+				break;
+			case 9:			//quit quit
+				quit = true;
+				break;
+			case 10:
 				system(PCLEAR);
 				menu_Main.displayHeader();
 				cout << "ARE YOU READY? Y/N?" << endl;
 				menu_Main.displayFooter();
 
 				switch (input.getCh()) {
-				case 'y':
-				case 'Y':
-					ShellExecute(NULL, "open", "http://corgiorgy.com", NULL, NULL, SW_SHOWNORMAL);
-				case 'n':
-				case 'N':
-					state = prev_state;
+					case 'y':
+					case 'Y':
+						ShellExecute(NULL, "open", "http://corgiorgy.com", NULL, NULL, SW_SHOWNORMAL);
+					case 'n':
+					case 'N':
+						state = prev_state;
 				}
 
 				break;
