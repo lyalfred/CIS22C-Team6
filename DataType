@@ -1,0 +1,51 @@
+All statements below are just prototype. The values/datatype may change as per the needs in the actual code. More variables will added based on the code requirements.
+
+Server network:
+Class Cable
++ cableNumber (int)
++ cableLength (double)
++ cableWeight (int)
++ Cable()
+
++ accessors and mutators for variables
+
+Class Server
++ serverNumber (int)
++ positionX (double)
++ positionY (double)
+Server()
+
+-----
+
+Delivery truck:
+Class Truck
++truckNumber (int)
+Truck()
++ accessors and mutators for variables
+
+Class Location:
++locationNumber (int)
++positionX (double)
++positionY (double)
++deliverStatus (bool)
+Location()
++ accessors and mutators for variables
+
+-----
+Road construction between cities:
+Class Road
++roadNumber (int)
++roadWeight (int)
++roadComplete (bool)
+accessors and mutators
+Road()
+
+
+Class City
++positionX (double)
++positionY (double)
++citiNumber (int)
+accessors and mutators
+City()
+
+

@@ -1,0 +1,20 @@
+•	Describe or show what the format of any output will be (for example, list of city names indicate visitation order, list of states with its color, list of network connections and their weights, etc.)
+
+Description: List of city names in the order in which they are visited. Each place will be visited once. User would be given an option to choose depth-first traversal or a depth first traversal. The result can be saved to a text file.
+Place3
+Place1
+Place5
+Place 4
+--------
+Total number of places visited: 63
+
+
+•	Indicate what your ItemType will be and representing what
+IteamType will be <string> representing the names of each city. 
+Example looks like this:
+   string place1("place1");
+   string place2("place2");;
+   string place3("place3");
+   string place4("place4");
+   string place5("place5");
+
