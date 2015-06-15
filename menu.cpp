@@ -21,7 +21,7 @@ using namespace std;
 string undostartPoint = "";
 string undoendPoint = "";
 int undoweight = 0;
-bool undoBool = false;
+
 
 // Static buffers
 
@@ -112,10 +112,6 @@ void MenuAdd::displayBody(){
 	cin >> endLabel;
 	cout << "What is the distance between the two vertexes?" << endl;
 	cin >> weight;
-	undostartPoint = startPoint;
-	undoendPoint = endPoint;
-	undoWeight = theGraph.getEdgeWeight(startPoint, endPoint);
-	undoBool = true;
 	theGraph.add(startLabel, endLabel, weight);
   
 }
@@ -152,7 +148,6 @@ void MenuRemove::displayBody(){
 	undostartPoint = startPoint;
 	undoendPoint = endPoint;
 	undoWeight = theGraph.getEdgeWeight(startPoint, endPoint);
-	undoBool = false;
 	theGraph.remove(startLabel, endLabel, weight);
 
 }
@@ -170,19 +165,10 @@ void MenuUndo::displayHeader(){
 
 void MenuUndo::displayBody(){
 	cout << "Undo Menu Body Content" << endl;
-	if(undoBool){
-		cout << "Undoing recently added edge..."<< endl;
-		theGraph.remove(undostartPoint, undoendPoint, undoWeight);
-		cout << "Recently added edge was removed";
-	}
-	else {
-		cout << "Undoing recently removed edge..."<< endl;
-		theGraph.add(undostartPoint, undoendPoint, undoWeight);
-		cout << "Recently removed edge was added";
-	}
-	
+	cout << "Undoing recently removed edge..."<< endl;
+	theGraph.add(undostartPoint, undoendPoint, undoWeight);
+	cout << "Recently removed edge was added";
 	cout << "Press 1 to return to main menu" << endl;
-	
 }
 
 
