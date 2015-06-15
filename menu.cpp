@@ -71,25 +71,33 @@ void MenuRead<Labeltype>::displayBody(const Labeltype& theGraph){
 //	Ask user the name of the file that contains the graph.
 //	Open the file to read. Assign it to inFile.
 
-	string startLabel, endLabel, line, home;
+	string filename, startLabel, endLabel, line, home;
 	int weight;
 	ifstream inFile;
+	cout << "Enter the input filename: ";
+	getline(cin, filename);
+	if (ifs.open(filename.c_str())){
 
-	while (getline(inFile,line))
-	{
-		int pos1 = line.find('-', 0);
-		startLabel = line.substr(0, pos1 - 1);
-		int pos2 = line.find('-', pos1 + 2);
-		endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
-		string weightString = line.substr(pos2 + 2);
-		weight = atoi(weightString.c_str());
-		theGraph->add(startLabel, endLabel, weight);
+		while (getline(inFile, line))
+		{
+			int pos1 = line.find('-', 0);
+			startLabel = line.substr(0, pos1 - 1);
+			int pos2 = line.find('-', pos1 + 2);
+			endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
+			string weightString = line.substr(pos2 + 2);
+			weight = atoi(weightString.c_str());
+			theGraph->add(startLabel, endLabel, weight);
+		}
+
+		//	Ask user for home vertex (Starting point). Store it in the string home.
+		theGraph->setHome(home);
+	}
+	else {
+		cout << "Invalid filename. Closing program." << endl;
+		system("pause");
+		return;
 	}
 
-//	Ask user for home vertex (Starting point). Store it in the string home.
-	theGraph->setHome(home);
-
-	
 }
 // Add Menu Functions
 template <class Labeltype>
@@ -141,8 +149,8 @@ void MenuRemove<Labeltype>::displayHeader(){
 template <class Labeltype>
 void MenuRemove<Labeltype>::displayBody(const Labeltype& theGraph){
 	string startPoint, endPoint;
-//	static string undostartPoint;
-//	static string undoendPoint;
+	static string undostartPoint;
+	static string undoendPoint;
 	static int undoWeight;
 	cout << "Remove Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
@@ -159,8 +167,7 @@ void MenuRemove<Labeltype>::displayBody(const Labeltype& theGraph){
 	undostartPoint = startPoint;
 	undoendPoint = endPoint;
 	undoWeight = theGraph->getEdgeWeight(startPoint, endPoint);
-	theGraph->remove(startPoint, endPoint);
-
+	theGraph->remove(startLabel, endLabel, weight);
 
 }
 
@@ -179,6 +186,9 @@ void MenuUndo<Labeltype>::displayHeader(){
 template <class Labeltype>
 void MenuUndo<Labeltype>::displayBody(const Labeltype& theGraph){
 	cout << "Undo Menu Body Content" << endl;
+	cout << "Undoing recently removed edge..." << endl;
+	theGraph->add(undostartPoint, undoendPoint, undoWeight);
+	cout << "Recently removed edge was added";
 	cout << "Press 1 to return to main menu" << endl;
 }
 
@@ -196,18 +206,18 @@ void MenuDisplay<Labeltype>::displayHeader(){
 
 template <class Labeltype>
 void MenuDisplay<Labeltype>::displayBody(const Labeltype& theGraph){
-	
+
 	cout << "Display Menu Body Content" << endl;
 	cout << "Press 1 for Depth First Traversal" << endl;
 	cout << "Press 2 for Breadth First Traversal" << endl;
 	cout << "Press 3 to return to main menu" << endl;
 	switch (input.getCh()){
-		case 1:
-			theGraph->depthFirstTraversalH(displayHelper);
-			break;
-		case 2:
-			theGraph->breadthFirstTraversalH(displayHelper);
-			break;
+	case 1:
+		theGraph->depthFirstTraversalH(displayHelper);
+		break;
+	case 2:
+		theGraph->breadthFirstTraversalH(displayHelper);
+		break;
 
 	}
 	/*
