@@ -64,7 +64,7 @@ void MenuRead<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuRead<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuRead<Labeltype>::displayBody(HamiltonianCircuit& theGraph) {
 	cout << "Read a graph from file" << endl;
 	cout << "Press 1 to return to main menu" << endl;
 
@@ -109,8 +109,7 @@ void MenuAdd<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuAdd<Labeltype>::displayBody(const Labeltype& theGraph){
-	
+void MenuAdd<Labeltype>::displayBody(HamiltonianCircuit& theGraph) {
 	int weight;
 	string startLabel, endLabel; 
 	cout << "Add Menu Body Content" << endl;
@@ -147,7 +146,7 @@ void MenuRemove<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuRemove<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuRemove<Labeltype>::displayBody(HamiltonianCircuit& theGraph){
 	string startPoint, endPoint;
 	static string undostartPoint;
 	static string undoendPoint;
@@ -184,7 +183,7 @@ void MenuUndo<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuUndo<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuUndo<Labeltype>::displayBody(HamiltonianCircuit& theGraph){
 	cout << "Undo Menu Body Content" << endl;
 	cout << "Undoing recently removed edge..." << endl;
 	theGraph->add(undostartPoint, undoendPoint, undoWeight);
@@ -205,7 +204,7 @@ void MenuDisplay<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuDisplay<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit& theGraph){
 
 	cout << "Display Menu Body Content" << endl;
 	cout << "Press 1 for Depth First Traversal" << endl;
@@ -251,7 +250,7 @@ void MenuSolve<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuSolve<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuSolve<Labeltype>::displayBody(HamiltonianCircuit& theGraph){
 	cout << "Solve Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
 
@@ -274,7 +273,7 @@ void MenuWrite<Labeltype>::displayHeader(){
 }
 
 template <class Labeltype>
-void MenuWrite<Labeltype>::displayBody(const Labeltype& theGraph){
+void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit& theGraph){
 	string theFile;
 	cout << "Write a graph to file" << endl;
 	cout << "Press 1 to return to main menu" << endl;
