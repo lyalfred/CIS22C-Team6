@@ -2,21 +2,20 @@
 
 #include <string>
 #include <iomanip>
-//#include "HamiltonianCircuit.h"
-//#include "LinkedGraph.h"
+#include "HamiltonianCircuit.h"
+#include "LinkedGraph.h"
 
 using namespace std;
 
 class Menu {
 
-protected:
-	
-
 public:
-//	static void Initialize();
+	//	static void Initialize();
+	HamiltonianCircuit<class LabelType> theGraph;
+	Input input;
 	virtual void displayHeader();       //Top portion of our user interface display
 	virtual void displayBody();			// The raw menu content
-	virtual void displayFooter(); 	   
+	virtual void displayFooter();
 };
 
 class MenuRead : public Menu {
@@ -47,6 +46,7 @@ class MenuDisplay : public Menu {
 public:
 	void displayHeader();
 	void displayBody();
+	void displayHelper(LabelType& label);
 };
 
 class MenuSolve : public Menu {
