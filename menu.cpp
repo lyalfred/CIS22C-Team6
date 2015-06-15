@@ -18,9 +18,9 @@ using namespace std;
 #endif
 
 // Static globals
-string undostartPoint = "";
-string undoendPoint = "";
-int undoweight = 0;
+static string undostartPoint = "";
+static string undoendPoint = "";
+static int undoweight = 0;
 
 
 // Static buffers
