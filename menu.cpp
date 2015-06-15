@@ -18,6 +18,10 @@ using namespace std;
 #endif
 
 // Static globals
+string undostartPoint = "";
+string undoendPoint = "";
+int undoweight = 0;
+bool undoBool = false;
 
 // Static buffers
 
