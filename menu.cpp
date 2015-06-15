@@ -108,6 +108,10 @@ void MenuAdd::displayBody(){
 	cin >> endLabel;
 	cout << "What is the distance between the two vertexes?" << endl;
 	cin >> weight;
+	undostartPoint = startPoint;
+	undoendPoint = endPoint;
+	undoWeight = theGraph.getEdgeWeight(startPoint, endPoint);
+	undoBool = true;
 	theGraph.add(startLabel, endLabel, weight);
   
 }
@@ -131,11 +135,12 @@ void MenuRemove::displayBody(){
 	static int undoWeight;
 	cout << "Remove Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
-/*
+		/*
 		+	Prompt user for startPoint and endPoint from where the edge has to be removed.
 		+	Local static variable UndostartPoint = startPoint
-		+	Local static vaiable UndoendPoint = endPoint
-		+	Local static vaiable UndoWeight = theGraph.getWeight(startPoint, endPoint)
+		+	Local static variable UndoendPoint = endPoint
+		+	Local static variable UndoWeight = theGraph.getWeight(startPoint, endPoint)
+		+	Local static boolean undoBool = false
 		+	theGraph.remove(startPoint,endPoint);
 		+	*/
 	cout << "Please enter the startPoint and endPoint from where the edge has to be removed" << endl;
@@ -143,7 +148,8 @@ void MenuRemove::displayBody(){
 	undostartPoint = startPoint;
 	undoendPoint = endPoint;
 	undoWeight = theGraph.getEdgeWeight(startPoint, endPoint);
-
+	undoBool = false;
+	theGraph.remove(startLabel, endLabel, weight);
 
 }
 
@@ -160,7 +166,19 @@ void MenuUndo::displayHeader(){
 
 void MenuUndo::displayBody(){
 	cout << "Undo Menu Body Content" << endl;
+	if(undoBool){
+		cout << "Undoing recently added edge..."<< endl;
+		theGraph.add(undostartPoint, undoendPoint, undoWeight);
+		cout << "Recently added edge was removed";
+	}
+	else {
+		cout << "Undoing recently removed edge..."<< endl;
+		theGraph.remove(undostartPoint, undoendPoint, undoWeight);
+		cout << "Recently removed edge was added";
+	}
+	
 	cout << "Press 1 to return to main menu" << endl;
+	
 }
 
 
