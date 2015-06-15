@@ -20,7 +20,7 @@ public:
 	~HamiltonianCircuit() {};
 	
 	// Return total weight of the Hamiltonian Circuit
-	int getWeight() const { return hamiltonianWeight; }
+	int getHamWeight() const { return hamiltonianWeight; }
 
 	//Mutator for home
 	void setHome(LabelType h) { home = h; }
