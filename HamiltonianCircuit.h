@@ -14,7 +14,7 @@ class HamiltonianCircuit : public LinkedGraph <LabelType>
 {
 public:
 	//Default constructor
-	HamiltonianCircuit() :LinkedGraph<LabelType>() {hamiltonianWeight = 0; home = 0; }
+	HamiltonianCircuit() :LinkedGraph<LabelType>() { hamiltonianWeight = 0; home = LabelType(); }
 	
 	//Destructor
 	~HamiltonianCircuit() {};
@@ -39,7 +39,10 @@ public:
 	void breadthFirstTraversalH(void visit(LabelType&)) { breadthFirstTraversal(home, visit); }
 	
 	//Save to file
-	bool saveToFileH(ofstream &ofs) { saveToFile(home, ofs); }
+	void saveToFileH(ofstream &ofs); 
+
+	//Return true if the vertex with label label exists
+	bool existVertex(LabelType& label) { return (this->vertices).contains(label); }
 	
 
 private:
@@ -52,6 +55,8 @@ private:
 	*/
 	bool findHamiltonianC(const LabelType& startLabel);
 	
+	//Return true if the graph is the completed graph, false otherwise
+	bool completedGraph() const { return this->getNumEdges() == (this->getNumVertices())*(this->getNumVertices() - 1) / 2; }
 	
 private:
 	vector<Vertex<LabelType>*> hamiltonianC; // the vector contains Hamiltonian Circuit
@@ -60,13 +65,26 @@ private:
 	
 };
 
+template <class LabelType>
+void HamiltonianCircuit<LabelType>::saveToFileH(ofstream &ofs)
+{
+	if (completedGraph())
+	{
+		this->saveToFile(home, ofs);
+	}
+	else
+	{
+		cout << "Error: Missing " << ((this->getNumVertices())*(this->getNumVertices() - 1) / 2) - this->getNumEdges() 
+			 << " connections. The graph is not completed. Could not save to file.\n";
+	}
+}
 
 template <class LabelType>
 void HamiltonianCircuit<LabelType>::saveHamiltonianC(ofstream &ofs)
 {
 	Vertex<LabelType>* start = 0, *end = 0;
 
-	for (int n = 0; n < hamiltonianC.size() - 1; n++)
+	for (int n = 0; n < (int)hamiltonianC.size() - 1; n++)
 	{
 		start = hamiltonianC[n];
 		end = hamiltonianC[n + 1];
@@ -86,7 +104,7 @@ void HamiltonianCircuit<LabelType>::displayHamiltonianC()
 	{
 		Vertex<LabelType>* start = 0, *end = 0;
 
-		for (int n = 0; n < hamiltonianC.size() - 1; n++)
+		for (int n = 0; n < (int)hamiltonianC.size() - 1; n++)
 		{
 			start = hamiltonianC[n];
 			end = hamiltonianC[n + 1];
@@ -109,11 +127,17 @@ bool HamiltonianCircuit<LabelType>::findHamiltonianC(const LabelType& startLabel
 	if (!vertices.contains(startLabel))
 		return false;
 
+	if (!completedGraph())
+	{
+		cout << "Error: Missing " << ((this->getNumVertices())*(this->getNumVertices() - 1) / 2) - this->getNumEdges()
+			<< " connections. The graph is not completed. Can not find the circuit.\n";
+		return false;
+	}
 
 	hamiltonianWeight = 0;
 	
 	Vertex<LabelType> *start = vertices.getItem(startLabel),  //The vertex at one end of the edge, initiallize it to the start vertex 
-					  *end; // the vertex at the other end
+					  *end = vertices.getItem(startLabel); // the vertex at the other end
 		
 	//Loop through all vertices of the graph
 	for (int index = 0; index < vertices.getNumberOfItems(); index++)
@@ -148,7 +172,7 @@ bool HamiltonianCircuit<LabelType>::findHamiltonianC(const LabelType& startLabel
 
 			}
 		}
-
+		
 		hamiltonianWeight += tempWeight;  //Add tempWeight to the total weight of the circuit
 		start = end; // Assign end vertex to start vertex to start another loop
 	}
