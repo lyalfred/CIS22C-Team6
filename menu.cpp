@@ -22,17 +22,18 @@ static string undostartPoint = "";
 static string undoendPoint = "";
 static int undoweight = 0;
 
-
 // Static buffers
 
-void Menu::displayHeader() {
+template <class Labeltype>
+void Menu<Labeltype>::displayHeader() {
 	system(PCLEAR);
 	cout << "Hamiltonian Circuit :: Main Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void Menu::displayBody() {
+template <class Labeltype>
+void Menu<Labeltype>::displayBody() {
 	cout << "1. Add Module" << endl;
 	cout << "2. Remove Module" << endl;
 	cout << "3. Undo Module" << endl;
@@ -41,9 +42,11 @@ void Menu::displayBody() {
 	cout << "6. Read Menu" << endl;
 	cout << "7. Write Menu" << endl;
 	cout << "8. Quit Option" << endl;
+
 }
 
-void Menu::displayFooter() {
+template <class Labeltype>
+void Menu<Labeltype>::displayFooter() {
 	cout << "\n" << setfill('=') << setw(W_SPACER) << "" << endl;
 	cout << setfill(' ');
 	cout << "De Anza CIS22C Spring 2015" << endl;
@@ -52,51 +55,61 @@ void Menu::displayFooter() {
 }
 
 // Read Menu Functions
-void MenuRead::displayHeader(){
+template <class Labeltype>
+void MenuRead<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Read Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuRead::displayBody(){
+template <class Labeltype>
+void MenuRead<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	cout << "Read a graph from file" << endl;
 	cout << "Press 1 to return to main menu" << endl;
 
 //	Ask user the name of the file that contains the graph.
 //	Open the file to read. Assign it to inFile.
 
-	string startLabel, endLabel, line, home;
+	string filename, startLabel, endLabel, line, home;
 	int weight;
 	ifstream inFile;
+	cout << "Enter the input filename: ";
+	getline(cin, filename);
+	if (ifs.open(filename.c_str())){
 
-	while (getline(inFile,line))
-	{
-		int pos1 = line.find('-', 0);
-		startLabel = line.substr(0, pos1 - 1);
-		int pos2 = line.find('-', pos1 + 2);
-		endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
-		string weightString = line.substr(pos2 + 2);
-		weight = atoi(weightString.c_str());
-		theGraph.add(startLabel, endLabel, weight);
+		while (getline(inFile, line))
+		{
+			int pos1 = line.find('-', 0);
+			startLabel = line.substr(0, pos1 - 1);
+			int pos2 = line.find('-', pos1 + 2);
+			endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
+			string weightString = line.substr(pos2 + 2);
+			weight = atoi(weightString.c_str());
+			theGraph->add(startLabel, endLabel, weight);
+		}
+
+		//	Ask user for home vertex (Starting point). Store it in the string home.
+		theGraph->setHome(home);
+	}
+	else {
+		cout << "Invalid filename. Closing program." << endl;
+		system("pause");
+		return;
 	}
 
-//	Ask user for home vertex (Starting point). Store it in the string home.
-	theGraph.setHome(home);
-
-	
 }
-
 // Add Menu Functions
-void MenuAdd::displayHeader(){
+template <class Labeltype>
+void MenuAdd<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Add Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuAdd::displayBody(){
-	
+template <class Labeltype>
+void MenuAdd<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	int weight;
 	string startLabel, endLabel; 
 	cout << "Add Menu Body Content" << endl;
@@ -115,7 +128,7 @@ void MenuAdd::displayBody(){
 	cin >> endLabel;
 	cout << "What is the distance between the two vertexes?" << endl;
 	cin >> weight;
-	theGraph.add(startLabel, endLabel, weight);
+	theGraph->add(startLabel, endLabel, weight);
   
 }
 
@@ -124,34 +137,36 @@ void MenuAdd::displayBody(){
 
 
 // Remove Menu Functions
-void MenuRemove::displayHeader(){
+template <class Labeltype>
+void MenuRemove<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Remove Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuRemove::displayBody(){
+template <class Labeltype>
+void MenuRemove<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	string startPoint, endPoint;
 	static string undostartPoint;
 	static string undoendPoint;
 	static int undoWeight;
 	cout << "Remove Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
-		/*
-		+	Prompt user for startPoint and endPoint from where the edge has to be removed.
-		+	Local static variable UndostartPoint = startPoint
-		+	Local static variable UndoendPoint = endPoint
-		+	Local static variable UndoWeight = theGraph.getWeight(startPoint, endPoint)
-		+	Local static boolean undoBool = false
-		+	theGraph.remove(startPoint,endPoint);
-		+	*/
+	/*
+	+	Prompt user for startPoint and endPoint from where the edge has to be removed.
+	+	Local static variable UndostartPoint = startPoint
+	+	Local static variable UndoendPoint = endPoint
+	+	Local static variable UndoWeight = theGraph.getWeight(startPoint, endPoint)
+	+	Local static boolean undoBool = false
+	+	theGraph.remove(startPoint,endPoint);
+	+	*/
 	cout << "Please enter the startPoint and endPoint from where the edge has to be removed" << endl;
 	cin >> startPoint >> endPoint;
 	undostartPoint = startPoint;
 	undoendPoint = endPoint;
-	undoWeight = theGraph.getEdgeWeight(startPoint, endPoint);
-	theGraph.remove(startLabel, endLabel, weight);
+	undoWeight = theGraph->getEdgeWeight(startPoint, endPoint);
+	theGraph->remove(startLabel, endLabel, weight);
 
 }
 
@@ -159,17 +174,19 @@ void MenuRemove::displayBody(){
 
 
 // Undo Menu Functions
-void MenuUndo::displayHeader(){
+template <class Labeltype>
+void MenuUndo<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Undo Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuUndo::displayBody(){
+template <class Labeltype>
+void MenuUndo<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	cout << "Undo Menu Body Content" << endl;
-	cout << "Undoing recently removed edge..."<< endl;
-	theGraph.add(undostartPoint, undoendPoint, undoWeight);
+	cout << "Undoing recently removed edge..." << endl;
+	theGraph->add(undostartPoint, undoendPoint, undoWeight);
 	cout << "Recently removed edge was added";
 	cout << "Press 1 to return to main menu" << endl;
 }
@@ -178,31 +195,33 @@ void MenuUndo::displayBody(){
 
 
 // Display Menu Functions
-void MenuDisplay::displayHeader(){
+template <class Labeltype>
+void MenuDisplay<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Display Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuDisplay::displayBody(){
-	
+template <class Labeltype>
+void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
+
 	cout << "Display Menu Body Content" << endl;
 	cout << "Press 1 for Depth First Traversal" << endl;
 	cout << "Press 2 for Breadth First Traversal" << endl;
 	cout << "Press 3 to return to main menu" << endl;
 	switch (input.getCh()){
-		case 1:
-			theGraph.depthFirstTraversalH(displayHelper);
-			break;
-		case 2:
-			theGraph.breadthFirstTraversalH(displayHelper);
-			break;
+	case 1:
+		theGraph->depthFirstTraversalH(displayHelper);
+		break;
+	case 2:
+		theGraph->breadthFirstTraversalH(displayHelper);
+		break;
 
 	}
 	/*
 	Write another helper function like this:
-	displayHelper(LabelType& label)
+	displayHelper(LabelType* label)
 	{
 	cout << label << " ";
 	}
@@ -214,21 +233,24 @@ void MenuDisplay::displayBody(){
 
 }
 
-void MenuDisplay::displayHelper(LabelType& label)
+template <class Labeltype>
+void MenuDisplay<Labeltype>::displayHelper(Labeltype* label)
 {
 	cout << label << " ";
 }
 
 
 // Solve Menu Functions
-void MenuSolve::displayHeader(){
+template <class Labeltype>
+void MenuSolve<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Solve Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuSolve::displayBody(){
+template <class Labeltype>
+void MenuSolve<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	cout << "Solve Menu Body Content" << endl;
 	cout << "Press 1 to return to main menu" << endl;
 
@@ -236,20 +258,22 @@ void MenuSolve::displayBody(){
 	theGraph.displayHamiltonianC()
 
 	*/
-	theGraph.displayHamiltonianC();
+	theGraph->displayHamiltonianC();
 
 
 }
 
 // Write Menu Functions
-void MenuWrite::displayHeader(){
+template <class Labeltype>
+void MenuWrite<Labeltype>::displayHeader(){
 	system(PCLEAR);
 	cout << "HamiltonianCircuit :: Write Menu" << endl;
 	cout << setfill('=') << setw(W_SPACER) << "" << "\n\n";
 	cout << setfill(' ');
 }
 
-void MenuWrite::displayBody(){
+template <class Labeltype>
+void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	string theFile;
 	cout << "Write a graph to file" << endl;
 	cout << "Press 1 to return to main menu" << endl;
@@ -264,6 +288,6 @@ void MenuWrite::displayBody(){
 	cout << "Please enter the name of the file" << endl;
 	cin >> theFile;
 	ofstream ofs(theFile);
-	theGraph.saveToFileH(ofs);
+	theGraph->saveToFileH(ofs);
 	ofs.close();
 }

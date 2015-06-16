@@ -27,18 +27,18 @@ using namespace std;
 
 int main() {
 
-	HamiltonianCircuit<string> circuit;
+	HamiltonianCircuit<string> *circuit = new HamiltonianCircuit<string>();
 
 	Input input;
 	//Menu modules
-	Menu			menu_Main;
-	MenuAdd			menu_Add;
-	MenuRemove		menu_Remove;
-	MenuUndo		menu_Undo;
-	MenuDisplay		menu_Display;
-	MenuSolve		menu_Solve;
-	MenuRead		menu_Read;
-	MenuWrite		menu_Write;
+	Menu<string>				menu_Main;
+	MenuAdd<string>				menu_Add;
+	MenuRemove<string>			menu_Remove;
+	MenuUndo<string>			menu_Undo;
+	MenuDisplay<string>			menu_Display;
+	MenuSolve<string>			menu_Solve;
+	MenuRead<string>			menu_Read;
+	MenuWrite<string>			menu_Write;
 
 		//Main globals
 	int state = 0;			// 0 - splash page
@@ -124,7 +124,7 @@ int main() {
 				break;
 			case 3:		// case state for remove menu
 				menu_Remove.displayHeader();
-				menu_Remove.displayBody();
+				menu_Remove.displayBody(circuit);
 
 				prev_state = 3;		//set last state to remove
 				switch (input.getCh()){
@@ -135,7 +135,7 @@ int main() {
 				break;
 			case 4:		// case state for undo menu
 				menu_Undo.displayHeader();
-				menu_Undo.displayBody();
+				menu_Undo.displayBody(circuit);
 
 				prev_state = 4;		//set last state to undo
 				switch (input.getCh()){
@@ -146,7 +146,7 @@ int main() {
 				break;
 			case 5:		// case state for display menu
 				menu_Display.displayHeader();	
-				menu_Display.displayBody();
+				menu_Display.displayBody(circuit);
 
 				prev_state = 5;		//set last state to display
 				switch (input.getCh()) {
@@ -158,7 +158,7 @@ int main() {
 				break;
 			case 6:			//case state for solve menu
 				menu_Solve.displayHeader();
-				menu_Solve.displayBody();
+				menu_Solve.displayBody(circuit);
 				
 				prev_state = 6;		//set last state to solve
 				switch (input.getCh()){
@@ -169,7 +169,7 @@ int main() {
 				break;
 			case 7:
 				menu_Read.displayHeader();
-				menu_Read.displayBody();
+				menu_Read.displayBody(circuit);
 
 				prev_state = 7;
 				switch (input.getCh()){
@@ -180,7 +180,7 @@ int main() {
 				break;
 			case 8:
 				menu_Write.displayHeader();
-				menu_Read.displayBody();
+				menu_Read.displayBody(circuit);
 
 				prev_state = 8;
 				switch (input.getCh()){
