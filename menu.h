@@ -22,48 +22,48 @@ template <class Labeltype>
 class MenuRead : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
 
 template <class Labeltype>
 class MenuAdd : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
 
 template <class Labeltype>
 class MenuRemove : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
 
 template <class Labeltype>
 class MenuUndo : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
 
 template <class Labeltype>
 class MenuDisplay : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
-	void displayHelper(const Labeltype& label);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
+	void displayHelper(Labeltype* label);
 };
 
 template <class Labeltype>
 class MenuSolve : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
 
 template <class Labeltype>
 class MenuWrite : public Menu<Labeltype> {
 public:
 	void displayHeader();
-	void displayBody(HamiltonianCircuit& theGraph);
+	void displayBody(HamiltonianCircuit<Labeltype>* theGraph);
 };
