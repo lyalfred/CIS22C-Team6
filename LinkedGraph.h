@@ -285,16 +285,19 @@ findOrCreateVertex(const LabelType& vertexLabel)
 //         WRITE THE GRAPH TO A TEXT FILE (SUGGEST TO PASS AN
 //        ofstream TO THIS !
 
+
 template<class LabelType>
 bool LinkedGraph<LabelType>::saveToFile(const LabelType& startLabel, ofstream &ofs)
 {
 	if (!vertices.contains(startLabel))
 		return false;
 
+	
 	Vertex<LabelType>* startVertex = vertices.getItem(startLabel);
 	queue<Vertex<LabelType>*> tempQueue; //the queue stores all vertices of the graph
+	startVertex->unvisit();
 	tempQueue.push(startVertex); //push the first vertex to the queue
-
+	
 	LabelType theLabel;
 	Vertex<LabelType>* theVertex;
 
@@ -305,6 +308,7 @@ bool LinkedGraph<LabelType>::saveToFile(const LabelType& startLabel, ofstream &o
 	{
 		theLabel = startVertex->getNextNeighbor();
 		theVertex = vertices.getItem(theLabel);
+		theVertex->unvisit();
 		tempQueue.push(theVertex);
 	}
 
@@ -323,7 +327,6 @@ bool LinkedGraph<LabelType>::saveToFile(const LabelType& startLabel, ofstream &o
 			{
 				int weight = theVertex->getEdgeWeight(endVertex); // get the weight of the edge between them
 				ofs << startVertex << " - " << endVertex << " - " << weight << endl; // write to file in this format: Start vertex - End vertex - Weight of the edge between them																				
-
 			}
 
 		}
