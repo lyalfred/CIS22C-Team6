@@ -36,8 +36,8 @@ public:
 
 
 	//Traversal functions
-	void depthFirstTraversalH(void visit(LabelType&)) { depthFirstTraversal(home, visit); }
-	void breadthFirstTraversalH(void visit(LabelType&)) { breadthFirstTraversal(home, visit); }
+	void depthFirstTraversalH(void visit(LabelType&));
+	void breadthFirstTraversalH(void visit(LabelType&));
 
 	//Save to file
 	bool saveToFileH(ofstream &ofs);
@@ -67,6 +67,28 @@ private:
 	LabelType home; // Label of the home vertex (the starting point)
 
 };
+
+template <class LabelType>
+void HamiltonianCircuit<LabelType>::breadthFirstTraversalH(void visit(LabelType&))
+{
+	if (this->getNumVertices() != 0)
+	{
+		this->breadthFirstTraversal(home, visit);
+	}
+	else
+		cout << "Error: The graph is empty\n";
+}
+
+template <class LabelType>
+void HamiltonianCircuit<LabelType>::depthFirstTraversalH(void visit(LabelType&))
+{
+	if (this->getNumVertices() != 0)
+	{
+		this->depthFirstTraversal(home, visit);
+	}
+	else
+		cout << "Error: The graph is empty\n";
+}
 
 
 template <class LabelType>
