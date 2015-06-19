@@ -81,6 +81,7 @@ bool HamiltonianCircuit<LabelType>::add(LabelType& start, LabelType& end, int ed
 	if (this->getNumVertices() == 2)
 	{
 		cout << "Enter your home point: ";
+		cin.ignore(cin.rdbuf()->in_avail());
 		getline(cin, home);
 	}
 
