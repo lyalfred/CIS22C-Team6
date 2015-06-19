@@ -117,7 +117,6 @@ void MenuRead<Labeltype>::displayHeader(){
 template <class Labeltype>
 void MenuRead<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	cout << "Read a graph from file" << endl;
-	cout << "Press 1 to return to main menu" << endl;
 
 	//	Ask user the name of the file that contains the graph.
 	//	Open the file to read. Assign it to inFile.
@@ -143,6 +142,9 @@ void MenuRead<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 		}
 
 		//	Ask user for home vertex (Starting point). Store it in the string home.
+		cout << "Enter your home point: "
+		cin.ignore(cin.rdbuf()->in_avail());
+		getline(cin, home);
 		theGraph->setHome(home);
 	}
 	else {
@@ -166,7 +168,7 @@ void MenuAdd<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	int weight;
 	string startLabel, endLabel;
 	cout << "Add Menu Body Content" << endl;
-	cout << "Press 1 to return to main menu" << endl;
+
 
 	/*
 	Ask user for the name of start and end vertex of the edge
@@ -209,7 +211,7 @@ void MenuRemove<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph)
 	//static string undoendPoint;
 	//static int undoWeight;
 	cout << "Remove Menu Body Content" << endl;
-	cout << "Press 1 to return to main menu" << endl;
+
 	/*
 	+	Prompt user for startPoint and endPoint from where the edge has to be removed.
 	+	Local static variable UndostartPoint = startPoint
@@ -245,7 +247,7 @@ void MenuUndo<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	cout << "Undoing recently removed edge..." << endl;
 	theGraph->add(undostartPoint, undoendPoint, undoWeight);
 	cout << "Recently removed edge was added" << endl;
-	cout << "Press 1 to return to main menu" << endl;
+
 }
 
 
@@ -267,16 +269,17 @@ void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph
 	cout << "Press 1 for Depth First Traversal" << endl;
 	cout << "Press 2 for Breadth First Traversal" << endl;
 	cout << "Press 3 to return to main menu" << endl;
+	/*
 	switch (input.getCh()){
 	case 1:
-//		theGraph->depthFirstTraversalH(displayHelper);
-		break;
+	//	theGraph->depthFirstTraversalH(displayHelper);
+	break;
 	case 2:
-//		theGraph->breadthFirstTraversalH(displayHelper);
-		break;
+	//	theGraph->breadthFirstTraversalH(displayHelper);
+	break;
 
 	}
-	/*
+
 	Write another helper function like this:
 	displayHelper(LabelType* label)
 	{
@@ -287,15 +290,7 @@ void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph
 	theGraph.depthFirstTraversalH(displayHelper) or
 	theGraph.breadthFirstTraversalH(displayHelper)
 	*/
-
 }
-
-void MenuDisplay<string>::displayHelper(string& label)
-{
-	cout << label << " ";
-}
-
-
 // Solve Menu Functions
 template <class Labeltype>
 void MenuSolve<Labeltype>::displayHeader(){
@@ -308,8 +303,6 @@ void MenuSolve<Labeltype>::displayHeader(){
 template <class Labeltype>
 void MenuSolve<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	cout << "Solve Menu Body Content" << endl;
-	cout << "Press 1 to return to main menu" << endl;
-
 	/*
 	theGraph.displayHamiltonianC()
 
@@ -332,7 +325,6 @@ template <class Labeltype>
 void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	string theFile;
 	cout << "Write a graph to file" << endl;
-	cout << "Press 1 to return to main menu" << endl;
 
 	/*
 	Ask user for the name of the file .
@@ -342,7 +334,8 @@ void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	ofs.close();
 	*/
 	cout << "Please enter the name of the file" << endl;
-	cin >> theFile;
+	cin.ignore(cin.rdbuf()->in_avail());
+	getline(cin, theFile);
 	ofstream ofs(theFile);
 	theGraph->saveToFileH(ofs);
 	ofs.close();
