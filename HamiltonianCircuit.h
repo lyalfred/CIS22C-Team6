@@ -78,11 +78,11 @@ bool HamiltonianCircuit<LabelType>::add(LabelType& start, LabelType& end, int ed
 
 	status = this->LinkedGraph<LabelType>::add(start, end, edgeWeight);
 
-//	if (this->getNumVertices() == 2)
-//	{
-//		cout << "Enter your home point: ";
-//		getline(cin, home);
-//	}
+	if (this->getNumVertices() == 2)
+	{
+		cout << "Enter your home point: ";
+		getline(cin, home);
+	}
 
 	return status;
 }
