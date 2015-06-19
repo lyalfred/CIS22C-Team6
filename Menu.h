@@ -102,7 +102,7 @@ void Menu<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	cout << "6. Read Menu" << endl;
 	cout << "7. Write Menu" << endl;
 	cout << "8. Quit Option" << endl;
-
+	cout << "9. Dance Party" << endl;
 }
 
 
@@ -222,8 +222,11 @@ void MenuRemove<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph)
 	+	Local static boolean undoBool = false
 	+	theGraph.remove(startPoint,endPoint);
 	+	*/
-	cout << "Please enter the startPoint and endPoint from where the edge has to be removed" << endl;
-	cin >> startPoint >> endPoint;
+	cout << "Please enter the startPoint from where the edge has to be removed. "<< endl;
+	cin.ignore(cin.rdbuf()->in_avail());
+	getline(cin, startPoint);
+	cout << "Please enter the corresponding endPoint" << endl;
+	getline(cin, endPoint);
 	undostartPoint = startPoint;
 	undoendPoint = endPoint;
 	undoWeight = theGraph->getEdgeWeight(startPoint, endPoint);
@@ -271,24 +274,7 @@ void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph
 	cout << "Press 1 for Depth First Traversal" << endl;
 	cout << "Press 2 for Breadth First Traversal" << endl;
 	cout << "Press 3 to return to main menu" << endl;
-	/*
-	switch (input.getCh()){
-	case 1:
-	//	theGraph->depthFirstTraversalH(displayHelper);
-	break;
-	case 2:
-	//	theGraph->breadthFirstTraversalH(displayHelper);
-	break;
-	}
-	Write another helper function like this:
-	displayHelper(LabelType* label)
-	{
-	cout << label << " ";
-	}
-	then call it from here like this:
-	theGraph.depthFirstTraversalH(displayHelper) or
-	theGraph.breadthFirstTraversalH(displayHelper)
-	*/
+
 }
 // Solve Menu Functions
 template <class Labeltype>
@@ -329,13 +315,9 @@ void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	string theFile;
 	cout << "Write a graph to file" << endl;
 
-	/*
-	Ask user for the name of the file .
-	Store in the string: theFile
-	ofstream ofs(theFile);
-	theGraph.saveToFileH(theFile);
-	ofs.close();
-	*/
+	
+//	Ask user for the name of the file .
+	
 	cout << "Please enter the name of the file you wish to save to" << endl;
 	cin.ignore(cin.rdbuf()->in_avail());
 	getline(cin, theFile);
