@@ -301,7 +301,7 @@ void MenuSolve<Labeltype>::displayHeader(){
 
 template <class Labeltype>
 void MenuSolve<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
-	string response;
+	string theFile;
 	cout << "Solve Menu Body Content" << endl;
 	/*
 	theGraph.displayHamiltonianC()
