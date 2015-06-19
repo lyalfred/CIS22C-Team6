@@ -28,8 +28,8 @@ class Menu {
 public:
 	Input input;
 	//static string undostartPoint = "";
-//	static string undoendPoint = "";
-//	static int undoWeight = 0;
+	//	static string undoendPoint = "";
+	//	static int undoWeight = 0;
 	virtual void displayHeader();       //Top portion of our user interface display
 	virtual void displayBody(HamiltonianCircuit<Labeltype>* theGraph);			// The raw menu content
 };
@@ -182,11 +182,11 @@ void MenuAdd<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 	cout << "Please input start vertex of edge" << endl;
 	cin.ignore(cin.rdbuf()->in_avail());
 	getline(cin, startLabel);
-//	cin >> startLabel;
+	//	cin >> startLabel;
 	cout << "Please input end vertex of edge" << endl;
 	cin.ignore(cin.rdbuf()->in_avail());
 	getline(cin, endLabel);
-//	cin >> endLabel;
+	//	cin >> endLabel;
 	cout << "What is the distance between the two vertexes?" << endl;
 	cin >> weight;
 	theGraph->add(startLabel, endLabel, weight);
@@ -279,15 +279,12 @@ void MenuDisplay<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph
 	case 2:
 	//	theGraph->breadthFirstTraversalH(displayHelper);
 	break;
-
 	}
-
 	Write another helper function like this:
 	displayHelper(LabelType* label)
 	{
 	cout << label << " ";
 	}
-
 	then call it from here like this:
 	theGraph.depthFirstTraversalH(displayHelper) or
 	theGraph.breadthFirstTraversalH(displayHelper)
@@ -304,14 +301,18 @@ void MenuSolve<Labeltype>::displayHeader(){
 
 template <class Labeltype>
 void MenuSolve<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
+	string response;
 	cout << "Solve Menu Body Content" << endl;
 	/*
 	theGraph.displayHamiltonianC()
-
 	*/
 	theGraph->displayHamiltonianC();
-
-
+	cout << "Please enter the name of the file you wish to save to" << endl;
+	cin.ignore(cin.rdbuf()->in_avail());
+	getline(cin, theFile);
+	ofstream ofs(theFile);
+	theGraph->saveHamiltonianC(ofs);
+	ofs.close();
 }
 
 // Write Menu Functions
@@ -335,7 +336,7 @@ void MenuWrite<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph){
 	theGraph.saveToFileH(theFile);
 	ofs.close();
 	*/
-	cout << "Please enter the name of the file" << endl;
+	cout << "Please enter the name of the file you wish to save to" << endl;
 	cin.ignore(cin.rdbuf()->in_avail());
 	getline(cin, theFile);
 	ofstream ofs(theFile);
