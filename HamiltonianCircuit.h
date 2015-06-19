@@ -48,6 +48,9 @@ public:
 	//Return true if the graph is the completed graph, false otherwise
 	bool isCompleted() const { return this->getNumEdges() == (this->getNumVertices())*(this->getNumVertices() - 1) / 2; }
 
+	//Overwrite add function, used to check the variable home and add value to home if
+	// user uses add function for an empty graph whose home has not been set yet.
+	bool add(LabelType& start, LabelType& end, int edgeWeight);
 
 private:
 	/*find the Hamiltonian Circuit from a given vertex
@@ -67,6 +70,22 @@ private:
 	LabelType home; // Label of the home vertex (the starting point)
 
 };
+
+template <class LabelType>
+bool HamiltonianCircuit<LabelType>::add(LabelType& start, LabelType& end, int edgeWeight)
+{
+	bool status;
+
+	status = this->LinkedGraph<LabelType>::add(start, end, edgeWeight);
+
+	if (this->getNumVertices() == 2)
+	{
+		cout << "Enter your home point: ";
+		getline(cin, home);
+	}
+
+	return status;
+}
 
 template <class LabelType>
 void HamiltonianCircuit<LabelType>::breadthFirstTraversalH(void visit(LabelType&))
