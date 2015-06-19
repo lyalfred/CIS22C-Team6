@@ -171,11 +171,13 @@ int main() {
 					circuit->depthFirstTraversalH(displayHelper);
 					cout << endl;
 					system("pause");
+					state = 1;
 					break;
 				case 2:
 					circuit->breadthFirstTraversalH(displayHelper);
 					cout << endl;
 					system("pause");
+					state = 1; 
 					break;
 				case 3: // main menu
 					state = 1;
