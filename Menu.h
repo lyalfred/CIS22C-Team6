@@ -140,7 +140,7 @@ void MenuRead<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 			string weightString = line.substr(pos2 + 2);
 			stringstream ss(weightString);
 			ss >> weight;
-			theGraph->add(startLabel, endLabel, weight);
+			theGraph->LinkedGraph<string>::add(startLabel, endLabel, weight);
 		}
 
 		//	Ask user for home vertex (Starting point). Store it in the string home.
