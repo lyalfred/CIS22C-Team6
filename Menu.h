@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include <sstream>
 
 #include "input.h"
 #include "menu.h"
@@ -135,14 +136,15 @@ void MenuRead<Labeltype>::displayBody(HamiltonianCircuit<Labeltype>* theGraph) {
 			int pos1 = line.find('-', 0);
 			startLabel = line.substr(0, pos1 - 1);
 			int pos2 = line.find('-', pos1 + 2);
-			endLabel = line.substr(pos1 + 2, pos2 - pos1 + 3);
+			endLabel = line.substr(pos1 + 2, pos2 - pos1 - 3);
 			string weightString = line.substr(pos2 + 2);
-			weight = atoi(weightString.c_str());
+			stringstream ss(weightString);
+			ss >> weight;
 			theGraph->add(startLabel, endLabel, weight);
 		}
 
 		//	Ask user for home vertex (Starting point). Store it in the string home.
-		cout << "Enter your home point: "
+		cout << "Enter your home point: ";
 		cin.ignore(cin.rdbuf()->in_avail());
 		getline(cin, home);
 		theGraph->setHome(home);
