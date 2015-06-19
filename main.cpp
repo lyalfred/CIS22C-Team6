@@ -122,11 +122,11 @@ int main() {
 			cout << "Press 1 to go back to main menu, or any other key to add more " << endl;
 			cin >> state;
 			switch (state){
-				case 1:
-					state = 1; //back to main menu
-					break;
-				default:
-					state = 2; //back to add menu
+			case 1:
+				state = 1; //back to main menu
+				break;
+			default:
+				state = 2; //back to add menu
 			}
 			break;
 		case 3:		// case state for remove menu
@@ -137,11 +137,11 @@ int main() {
 			cout << "Press 1 to go back to main menu, or any other key to remove more " << endl;
 			cin >> state;
 			switch (state){
-				case 1:
-					state = 1; //back to main menu
-					break;
-				default:
-					state = 3; //back to remove menu
+			case 1:
+				state = 1; //back to main menu
+				break;
+			default:
+				state = 3; //back to remove menu
 			}
 			break;
 		case 4:		// case state for undo menu
@@ -152,12 +152,12 @@ int main() {
 			cout << "Press 1 to go back to main menu" << endl;
 			cin >> state;
 			switch (state){
-				case 1:
-					state = 1; //back to main menu
-					break;
-				default:
-					cout << "You didn't press 1...going back to the main menu anyway..." << endl;
-					state = 1; //back to main menu
+			case 1:
+				state = 1; //back to main menu
+				break;
+			default:
+				cout << "You didn't press 1...going back to the main menu anyway..." << endl;
+				state = 1; //back to main menu
 			}
 			break;
 		case 5:		// case state for display menu
@@ -167,24 +167,24 @@ int main() {
 			prev_state = 5;		//set last state to display
 			cin >> state;
 			switch (state) {
-				case 1:
-					circuit->depthFirstTraversalH(displayHelper);
-					cout << endl;
-					system("pause");
-					state = 1;
-					break;
-				case 2:
-					circuit->breadthFirstTraversalH(displayHelper);
-					cout << endl;
-					system("pause");
-					state = 1; 
-					break;
-				case 3: // main menu
-					state = 1;
-					break;
-				default:
-					cout << "Invalid Option. " << endl;
-					state = 5; //back to display menu
+			case 1:
+				circuit->depthFirstTraversalH(displayHelper);
+				cout << endl;
+				system("pause");
+				state = 1;
+				break;
+			case 2:
+				circuit->breadthFirstTraversalH(displayHelper);
+				cout << endl;
+				system("pause");
+				state = 1;
+				break;
+			case 3: // main menu
+				state = 1;
+				break;
+			default:
+				cout << "Invalid Option. " << endl;
+				state = 5; //back to display menu
 			}
 			break;
 		case 6:			//case state for solve menu
@@ -210,12 +210,12 @@ int main() {
 			cout << "Press 1 to go back to main menu" << endl;
 			cin >> state;
 			switch (state) {
-				case 1: // main menu
-					state = 1;
-					break;
-				default:
-					cout << "You didn't press 1...going back to the main menu anyway..." << endl;
-					state = 1; //back to main menu
+			case 1: // main menu
+				state = 1;
+				break;
+			default:
+				cout << "You didn't press 1...going back to the main menu anyway..." << endl;
+				state = 1; //back to main menu
 			}
 			break;
 		case 8:
@@ -226,12 +226,12 @@ int main() {
 			cout << "Press 1 to go back to main menu" << endl;
 			cin >> state;
 			switch (state) {
-				case 1: // main menu
-					state = 1;
-					break;
-				default:
-					cout << "You didn't press 1...going back to the main menu anyway..." << endl;
-					state = 1; //back to main menu
+			case 1: // main menu
+				state = 1;
+				break;
+			default:
+				cout << "You didn't press 1...going back to the main menu anyway..." << endl;
+				state = 1; //back to main menu
 			}
 			break;
 		case 9:			//quit quit
@@ -256,4 +256,3 @@ int main() {
 	}
 	return 0;
 }
-
