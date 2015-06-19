@@ -78,11 +78,11 @@ bool HamiltonianCircuit<LabelType>::add(LabelType& start, LabelType& end, int ed
 
 	status = this->LinkedGraph<LabelType>::add(start, end, edgeWeight);
 
-	if (this->getNumVertices() == 2)
-	{
-		cout << "Enter your home point: ";
-		getline(cin, home);
-	}
+//	if (this->getNumVertices() == 2)
+//	{
+//		cout << "Enter your home point: ";
+//		getline(cin, home);
+//	}
 
 	return status;
 }
@@ -145,7 +145,7 @@ void HamiltonianCircuit<LabelType>::saveHamiltonianC(ofstream &ofs)
 	}
 	ofs << "----------------" << endl;
 	ofs << "Total weight: " << hamiltonianWeight << endl;
-	
+
 }
 
 
@@ -201,7 +201,7 @@ bool HamiltonianCircuit<LabelType>::findHamiltonianC(const LabelType& startLabel
 	Vertex<LabelType> *start = vertices.getItem(startLabel),  //The vertex at one end of the edge, initiallize it to the start vertex 
 		*end = vertices.getItem(startLabel); // the vertex at the other end
 
-	
+
 
 	//Loop through all vertices of the graph
 	for (int index = 0; index < vertices.getNumberOfItems() - 1; index++)
